@@ -1,0 +1,37 @@
+<!-- refs - доступ к DOM через заранее заданные ref-ы -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Hello-world!!!</title>
+</head>
+<body>
+<div id="app">
+    <button @click="printRefs">Print refs!</button><!-- Вывод в консоль референций -->
+    <button @click="printOldRefs">Old manipulation with DOM!</button><!-- Вывод в консоль референций -->
+    <div ref="someRef"> <!-- if !isShown -> delete from DOM --->
+        <p>I am show by if</p>
+    </div>
+
+    <br>
+</div>
+
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script><!-- версия для разработки, отображает полезные предупреждения в консоли -->
+<script>
+    new Vue({
+        el: "#app", //тэг корневого элемента
+        data: {   //переменные
+
+        },
+        methods: {
+            printRefs: function() {<!-- использует виртуальный дом -->
+                console.log(this.$refs)
+            },
+            printOldRefs: function() {<!-- НЕ использует виртуальный дом, РЕСУРСОЕМКОЕ, СТАРОЕ -->
+                console.log(document.querySelector('div'))
+            }
+        }
+    })
+</script>

@@ -1,0 +1,41 @@
+<!-- For цикл -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Hello-world!!!</title>
+</head>
+<body>
+<div id="app">
+    <div v-for="(dog, key) in dogs"> <!--КОЛЛЕКЦИЯ ОБЪЕКТОВ-->
+        <p>{{key}}. {{dog.name}}</p>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div v-for="(dog, key) in bigDog"> <!--ОБЪЕКТ-->
+        <p>{{key}} --- {{dog}}</p>
+    </div>
+</div>
+
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script><!-- версия для разработки, отображает полезные предупреждения в консоли -->
+<script>
+    new Vue({
+        el: "#app", //тэг корневого элемента
+        data: {   //переменные
+            dogs: [
+                {name: "Ted", age: 4},
+                {name: "Elga", age: 4.5},
+                {name: "Yana", age: 3}
+            ],
+            bigDog: {
+                name: "Ted",
+                age: 4
+            },
+        },
+    })
+</script>

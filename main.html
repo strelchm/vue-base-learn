@@ -1,0 +1,47 @@
+<!-- Первый урок. Создание простейшего компонента -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Hello-world!!!</title>
+</head>
+<body>
+<div id="app">
+    <p>Enter name:</p>
+    <input type="text" @input="changeName">
+    <h1>Hello, world! Dear, {{name}} {{counter}}</h1>
+    <button @click="foo(); iterate()">
+        dfssf
+    </button>
+    <div>
+        <input type="text" @input="inputVal = $event.target.value">
+        <h2>
+            {{inputVal}}
+        </h2>
+    </div>
+</div>
+
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script><!-- версия для разработки, отображает полезные предупреждения в консоли -->
+<script>
+    new Vue({
+        el: "#app", //тэг корневого элемента
+        data: {   //переменные
+            name: "Vue",
+            counter: 0,
+            inputVal: "",
+        },
+        methods: { //функции
+            changeName: function (event) {
+                this.name = event.target.value;
+            },
+            foo: function () {
+                alert("Button pressed");
+            },
+            iterate: function () {
+                ++this.counter;
+            },
+        }
+    })
+</script>

@@ -1,0 +1,66 @@
+<!-- Цикл жизни VUE-объекта -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Hello-world!!!</title>
+</head>
+<body>
+<div id="app">
+    <button @click="randomTitle">Change title!</button><!-- Вывод в консоль референций -->
+    <div> <!-- if !isShown -> delete from DOM --->
+        <p>{{title}}</p>
+    </div>
+
+    <button @click="reverseTitle">Reverse title!</button><!-- Вывод в консоль референций -->
+    <div> <!-- if !isShown -> delete from DOM --->
+        <p>{{secondTitle}}</p>
+    </div>
+
+    <br>
+</div>
+
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script><!-- версия для разработки, отображает полезные предупреждения в консоли -->
+<script>
+    new Vue({
+        el: "#app", //тэг корневого элемента
+        data: {   //переменные
+            title: "",
+            secondTitle: "Michael",
+        },
+        methods: {
+            randomTitle: function () {
+                this.title = "-----" + Math.random();
+            },
+            reverseTitle: function () {
+                this.secondTitle = this.secondTitle.split("").reverse().join("");
+            },
+        },
+        beforeCreate: function () { //произошла инициализация и VUE готовится создать новое приложение
+            console.log("before create!");
+        },
+        created: function () { //приложение уже создано. Html код страницы будет обрабатываться после данного этапа
+            console.log("before create!");
+        },
+        beforeMount: function () {
+            console.log("before mount!");
+        },
+        mounted: function () { //вставляет скомпилированный шаблон в DOM-дерево
+            console.log("mounted!");
+        },
+        beforeUpdate: function () {
+            console.log("before update!");
+        },
+        updated: function () { //обновление узла в DOM-дереве
+            console.log("updated!");
+        },
+        beforeDestroy: function () {
+            console.log("before destroy!");
+        },
+        destroyed: function () { //удаление VUE-компонента (т е приложения, память есть не будет, но html останется)
+            console.log("destroyed!");
+        }
+    })
+</script>
